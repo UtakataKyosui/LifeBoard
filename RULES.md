@@ -68,6 +68,7 @@ flowchart TB
 | Package Manager    | pnpm             | 決定済み                |
 | Runtime            | Node.js          | Workers互換性は別途検証     |
 | Formatter / Linter | Biome            | 一元化候補               |
+| Code Structure Analysis |	Fallow | 採用推奨
 | Unit Test          | Vitest           | ドメイン単体テスト向け         |
 | E2E Test           | Jest + Supertest | NestJSのHTTPテスト候補    |
 | Git Hooks          | Lefthook         | pre-commit検証        |
