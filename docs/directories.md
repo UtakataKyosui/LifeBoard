@@ -147,8 +147,6 @@ flowchart TB
 
 ```
 
-`packages/domain`はNestJS・Notion・Mastraに依存させない。周期計算や実績集計は、外部サービスなしで単体テストできるようにする。
-
 ## pnpm-workspace.yaml
 
 ```
@@ -188,3 +186,18 @@ packages:
 実際にはNestJS関連の依存パッケージも追加する。
 最初に作るのは `apps/api`、`packages/domain`、`packages/contracts`、`packages/notion` の4つで十分。
 `packages/ai`はMastra導入時に、`apps/web`はフロントエンド開発時に追加する形でよい。
+
+
+## 依存関係の設計原則
+
+| パッケージ                  | 依存先                           | 役割                   |
+| ---------------------- | ----------------------------- | -------------------- |
+| `@lifeboard/api`       | domain, contracts, notion, ai | アプリケーションの組み立てとユースケース |
+| `@lifeboard/web`       | contracts                     | API契約を共有             |
+| `@lifeboard/contracts` | domain                        | APIの入力・出力スキーマ        |
+| `@lifeboard/notion`    | domain                        | Notionへの永続化          |
+| `@lifeboard/ai`        | domain                        | AIによる行動支援            |
+| `@lifeboard/domain`    | なし                            | 純粋なドメインロジック          |
+
+なお、これは設計上のパッケージ依存図であり、NestJSのDependency Injectionにおける実行時の依存関係とは別。DIの依存方向を逆転させる場合でも、物理的なimport関係と混同しないようにしたい。
+`packages/domain`はNestJS・Notion・Mastraに依存させない。周期計算や実績集計は、外部サービスなしで単体テストできるようにする。
