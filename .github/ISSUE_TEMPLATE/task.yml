@@ -1,0 +1,53 @@
+name: "Sub Issue"
+description: "実装・テスト・調査など、1つの作業単位"
+title: "[Task] "
+labels: ["task"]
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: 作業種別
+      options:
+        - Feature
+        - Bug
+        - Refactor
+        - Test
+        - Research
+        - Docs
+    validations:
+      required: true
+  - type: textarea
+    id: objective
+    attributes:
+      label: 目的・背景
+      description: 何を解決するためのIssueかを記述してください。
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: 対応内容
+      description: 実施する作業。設計は必要な範囲にとどめてください。
+      placeholder: |
+        - 
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 受入条件
+      description: 結果を検証できる条件をチェックリストにしてください。
+      value: |
+        - [ ] 
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: 検証方法
+      description: 単体テスト、APIテスト、手動確認など。未確定なら空欄で構いません。
+      placeholder: |
+        - 
+  - type: textarea
+    id: notes
+    attributes:
+      label: 補足・制約
+      description: 関連Issue、Notion API制約、AI利用時の注意点など。
