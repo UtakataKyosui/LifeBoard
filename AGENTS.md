@@ -78,6 +78,25 @@ Do not introduce abstractions, dependencies, or architectural complexity without
 - Do not silently swallow exceptions.
 - Keep comments focused on intent and non-obvious constraints.
 
+### Static Analysis: Fallow
+
+- Use Fallow for project-wide structural analysis.
+- Detect circular dependencies, dead code, duplicated logic, and architecture boundary violations.
+- Run Fallow analysis before major refactoring.
+- Use `fallow audit` to review newly introduced structural problems.
+- Treat automated fixes as proposals requiring review.
+- Do not modify code solely to maximize health scores.
+
+### Effect Usage
+
+- NestJS remains responsible for dependency injection and HTTP application lifecycle.
+- Use Effect selectively for fallible external operations when typed errors, retry, timeout, or resource management provide clear value.
+- Do not introduce a second application-wide dependency injection system without an explicit architectural decision.
+- Keep deterministic domain logic as ordinary pure TypeScript functions.
+- Convert Effect failures into application errors at explicit integration boundaries.
+- Avoid mixing Effect Schema and Zod for the same validation responsibility without a documented reason.
+- Do not introduce Effect solely to wrap synchronous functions or simple Promise operations.
+
 ## 8. Testing
 
 - Test domain invariants and schedule calculations.
