@@ -1,0 +1,43 @@
+name: "Epic"
+description: "複数のSub Issueをまとめる開発テーマ"
+title: "[Epic] "
+labels: ["epic"]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: 目的
+      description: このEpicで実現したいことと背景を簡潔に記述してください。
+      placeholder: "例：日次Routineを登録し、当日の実行予定を取得できるようにする"
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: スコープ
+      description: 対象と対象外を必要な範囲で記載してください。
+      placeholder: |
+        対象：
+        - 
+        対象外：
+        -
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 完了条件
+      description: Epicを完了と判断する基準。
+      value: |
+        - [ ] 
+    validations:
+      required: true
+  - type: textarea
+    id: child_issues
+    attributes:
+      label: Sub Issues
+      description: GitHubのSub-issues機能で関連付ける。ここは補助メモとして使う。
+      placeholder: "作成後、GitHubのSub-issues機能で紐付ける"
+  - type: textarea
+    id: notes
+    attributes:
+      label: 補足・未決定事項
+      description: 技術検証や保留事項があれば記入。
